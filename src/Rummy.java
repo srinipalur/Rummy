@@ -8,20 +8,20 @@ public class Rummy
         //Shuffle array
         //Deal cards
         //Identify winning sets
-        Card deck[]=new Card[52];
-        int cardNum=0;
-        for(int i=0;i<13;i++)
-            for(int j=0;j<4;j++)
-            {
-                if(cardNum==52)
-                    break;
-                deck[cardNum] = new Card(i, j);
-                cardNum++;
-            }
-
+        Card deck[]=Card.initializeDeck();
         Card.Shuffle(deck);
         Card.printDeck(deck);
         Card x = Card.drawRandomCard(deck);
         x.printSingleCard();
+
+        Card hand[]=new Card[7];
+
+        for(int i=0;i<hand.length;i++)
+        {
+            hand[i]=Card.deck[i];
+            Card.deck[i]=null;
+        }
+        System.out.println("Now printing the hand");
+        Card.printDeck(hand);
     }
 }
